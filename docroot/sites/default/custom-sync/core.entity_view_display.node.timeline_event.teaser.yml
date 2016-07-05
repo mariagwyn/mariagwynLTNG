@@ -1,0 +1,26 @@
+uuid: 417553c1-2b44-4fe3-a69a-9f879aa622a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.timeline_event.body
+    - node.type.timeline_event
+  module:
+    - text
+    - user
+id: node.timeline_event.teaser
+targetEntityType: node
+bundle: timeline_event
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }

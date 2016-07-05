@@ -1,0 +1,14 @@
+uuid: 7f68b2c4-c178-40e5-a37f-904a3ee1764f
+name: 'Lightning D8'
+mail: maria.mcdowell@acquia.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /node
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+_core:
+  default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI

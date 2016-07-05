@@ -1,0 +1,10 @@
+uuid: 20f05ccb-baba-4b9e-9f40-8df1598f2ab4
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: HtZgSbbcrtHAeiKKJGFMFmMcUKZLPumzYJce2-GFqQ8
+id: needs_review
+label: 'Needs Review'
+published: false
+default_revision: false

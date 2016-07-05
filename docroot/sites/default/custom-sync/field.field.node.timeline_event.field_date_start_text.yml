@@ -1,0 +1,19 @@
+uuid: a89742d2-2832-4375-a687-77afa590cc8a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date_start_text
+    - node.type.timeline_event
+id: node.timeline_event.field_date_start_text
+field_name: field_date_start_text
+entity_type: node
+bundle: timeline_event
+label: 'Start Date (text)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

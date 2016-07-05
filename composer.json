@@ -1,0 +1,125 @@
+{
+    "name": "acquia/lightning-project",
+    "description": "Project template for Drupal 8 sites built with the Lightning distribution.",
+    "type": "project",
+    "license": "GPL-2.0+",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "behat/behat": "^3.1",
+        "drupal/drupal-extension": "^3.1",
+        "behat/mink": "~1.6",
+        "behat/mink-goutte-driver": "~1.2",
+        "jcalderonzumba/gastonjs": "~1.0.2",
+        "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
+        "mikey179/vfsStream": "~1.2",
+        "phpunit/phpunit": "~4.8",
+        "symfony/css-selector": "2.7.*"
+    },
+    "require": {
+        "composer/installers": "^1.0",
+        "drupal-composer/drupal-scaffold": "^2.0.0",
+        "cweagans/composer-patches": "1.5.0",
+        "drupal/lightning": "^8.1.0",
+        "drupal/file_browser": "~8.1",
+        "drupal/views_timelinejs":                    "8.3.x-dev",
+        "enyo/dropzone" : "dev-master",
+        "desandro/imagesloaded" : "dev-master",
+        "desandro/masonry" : "dev-master",
+        "drupal/zurb_foundation":                     "~8.6"
+    },
+    "repositories": [
+      {
+        "type": "composer",
+        "url": "https://packagist.drupal-composer.org"
+      },
+      {
+        "type"    : "package",
+        "package" : {
+          "name"    : "enyo/dropzone",
+          "version" : "dev-master",
+          "type"    : "drupal-library",
+          "source"  : {
+            "url"       : "https://github.com/enyo/dropzone.git",
+            "type"      : "git",
+            "reference" : "origin/master"
+          }
+        }
+      },
+      {
+            "type"    : "package",
+            "package" : {
+                "name"    : "desandro/imagesloaded",
+                "version" : "dev-master",
+                "type"    : "drupal-library",
+                "dist"    : {
+                    "url"  : "https://github.com/desandro/imagesloaded.git",
+                    "type" : "drupal-library"
+                },
+                "source"  : {
+                    "url"       : "https://github.com/desandro/imagesloaded.git",
+                    "type"      : "git",
+                    "reference" : "origin/master"
+                }
+            }
+        },
+        {
+            "type"    : "package",
+            "package" : {
+                "name"    : "desandro/masonry",
+                "version" : "dev-master",
+                "type"    : "drupal-library",
+                "dist"    : {
+                    "url"  : "https://github.com/desandro/masonry.git",
+                    "type" : "drupal-library"
+                },
+                "source"  : {
+                    "url"       : "https://github.com/desandro/masonry.git",
+                    "type"      : "git",
+                    "reference" : "origin/master"
+                }
+            }
+        }
+    ],
+    "scripts": {
+      "post-install-cmd": [
+        "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "Acquia\\Lightning\\ScriptHandler::deployLibraries"
+      ],
+      "post-update-cmd": [
+        "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "Acquia\\Lightning\\ScriptHandler::deployLibraries"
+      ]
+    },
+    "config": {
+        "bin-dir": "bin/"
+    },
+    "autoload": {
+        "classmap": [
+          "scripts/ScriptHandler.php"
+        ]
+    },
+    "extra": {
+        "installer-paths": {
+            "docroot/core": [
+                "drupal/core"
+            ],
+            "docroot/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "docroot/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "docroot/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "docroot/libraries/{$name}": [
+              "type:drupal-library"
+            ],
+            "drush/contrib/{$name}": [
+                "type:drupal-drush"
+            ]
+        },
+        "enable-patching": true
+    }
+}

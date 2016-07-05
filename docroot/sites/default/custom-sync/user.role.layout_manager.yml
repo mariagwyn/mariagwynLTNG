@@ -1,0 +1,11 @@
+uuid: 216db29e-ad66-4957-a248-250ae60a1ba6
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: FX0rVCMmx65sxBEqkvIKEP66xS6pRNzw0waI1cgs7-c
+id: layout_manager
+label: 'Layout Manager'
+weight: 2
+is_admin: true
+permissions: {  }

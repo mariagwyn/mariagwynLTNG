@@ -1,0 +1,15 @@
+uuid: 66283666-0786-44f0-8edb-7613a62c58c1
+langcode: en
+status: true
+dependencies: {  }
+id: timeline_event_reviewer
+label: 'Timeline Event Reviewer'
+weight: 8
+is_admin: null
+permissions:
+  - 'edit any timeline_event content'
+  - 'delete any timeline_event content'
+  - 'use draft_published transition'
+  - 'use needs_review_draft transition'
+  - 'use needs_review_published transition'
+  - 'use published_published transition'

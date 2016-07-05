@@ -1,0 +1,20 @@
+uuid: b74b0451-f326-4cde-bf2c-bb06f11cb627
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_media_credit
+field_name: field_media_credit
+entity_type: node
+type: text
+settings:
+  max_length: 255
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

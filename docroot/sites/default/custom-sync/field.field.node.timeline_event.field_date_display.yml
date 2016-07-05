@@ -1,0 +1,21 @@
+uuid: 349136ef-cc0b-44c8-8be7-79173a4a7936
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date_display
+    - node.type.timeline_event
+  module:
+    - datetime
+id: node.timeline_event.field_date_display
+field_name: field_date_display
+entity_type: node
+bundle: timeline_event
+label: 'Display Date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,18 @@
+uuid: 3c3c8228-a09f-42c3-a02a-8b1b16fd9ef4
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Timeline Event'
+type: timeline_event
+description: ''
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

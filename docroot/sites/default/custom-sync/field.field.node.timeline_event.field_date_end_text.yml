@@ -1,0 +1,19 @@
+uuid: 10dbecaa-d4de-4e03-ad94-e4934ab03464
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date_end_text
+    - node.type.timeline_event
+id: node.timeline_event.field_date_end_text
+field_name: field_date_end_text
+entity_type: node
+bundle: timeline_event
+label: 'End Date (text)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
