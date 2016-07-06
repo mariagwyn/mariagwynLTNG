@@ -11,7 +11,7 @@ field_name: field_vocab_timeline
 entity_type: node
 bundle: timeline_event
 label: Timeline
-description: ''
+description: 'Select the timeline this to which this timeline event belongs.'
 required: false
 translatable: false
 default_value: {  }

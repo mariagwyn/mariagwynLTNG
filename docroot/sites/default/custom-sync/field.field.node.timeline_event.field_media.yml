@@ -11,8 +11,8 @@ id: node.timeline_event.field_media
 field_name: field_media
 entity_type: node
 bundle: timeline_event
-label: Media
-description: ''
+label: 'Media (Text)'
+description: 'Text in raw html format, either <code> <iframe> </code> or <code> <blockquote> </code> which are compatible with <a href="https://timeline.knightlab.com/docs/media-types.html" target="_blank">TimelineJS media types</a>.'
 required: false
 translatable: false
 default_value: {  }

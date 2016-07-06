@@ -41,6 +41,7 @@ settings:
             - Table
             - HorizontalRule
             - media_browser
+            - file_browser
         -
           name: 'Block Formatting'
           items:

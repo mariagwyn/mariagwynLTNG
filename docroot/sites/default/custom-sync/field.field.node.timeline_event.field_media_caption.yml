@@ -12,7 +12,7 @@ field_name: field_media_caption
 entity_type: node
 bundle: timeline_event
 label: 'Media Caption'
-description: ''
+description: 'This field may contain any text, including HTML markup.'
 required: false
 translatable: false
 default_value: {  }

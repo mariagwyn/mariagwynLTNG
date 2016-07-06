@@ -1,4 +1,4 @@
-uuid: edeb5ea0-f9ed-4271-87ed-9d11e195ff39
+uuid: 17aa2da7-c4b7-486a-a7eb-d39ee6c305be
 langcode: en
 status: true
 dependencies:
@@ -9,7 +9,7 @@ field_name: field_date_display_text
 entity_type: node
 type: string
 settings:
-  max_length: 15
+  max_length: 255
   is_ascii: false
   case_sensitive: false
 module: core

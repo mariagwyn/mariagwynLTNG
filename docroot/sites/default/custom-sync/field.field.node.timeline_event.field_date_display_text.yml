@@ -1,4 +1,4 @@
-uuid: decc8f33-c347-4ae0-9073-6294797ba513
+uuid: a582d058-fa66-4d88-b949-1ddc99fe2af5
 langcode: en
 status: true
 dependencies:
@@ -10,7 +10,7 @@ field_name: field_date_display_text
 entity_type: node
 bundle: timeline_event
 label: 'Display Date (text)'
-description: ''
+description: 'Date as you want it to be visible'
 required: false
 translatable: false
 default_value: {  }

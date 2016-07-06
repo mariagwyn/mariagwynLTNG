@@ -1,30 +1,32 @@
-uuid: 57fbfa95-d435-46a7-8df8-01a04bc95617
+uuid: ea050457-1ace-4348-835a-59cc9387810a
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
     - field.storage.node.body
     - field.storage.node.field_date_display_text
     - field.storage.node.field_date_end_text
     - field.storage.node.field_date_start_text
     - field.storage.node.field_image_background
-    - field.storage.node.field_image_media
     - field.storage.node.field_media
     - field.storage.node.field_media_caption
     - field.storage.node.field_media_credit
+    - field.storage.node.field_media_image
+    - field.storage.node.field_media_link
     - field.storage.node.field_timeline_group
     - field.storage.node.field_timeline_type
-    - image.style.large
+    - field.storage.node.field_vocab_timeline
     - node.type.timeline_event
   module:
     - image
+    - image_url_formatter
+    - link
     - node
     - text
     - user
     - views_timelinejs
-id: timeline_1
-label: 'Timeline 1'
+id: timeline_master
+label: 'Timeline Master'
 module: views
 description: ''
 tag: ''
@@ -87,12 +89,12 @@ display:
           timeline_config:
             width: 100%
             height: 500px
-            hash_bookmark: false
+            hash_bookmark: true
             scale_factor: 2
             start_at_end: false
             language: ''
           additional_config:
-            font: ''
+            font: bitter-raleway
             start_at_current: false
           timeline_fields:
             headline: title
@@ -101,16 +103,19 @@ display:
             end_date: field_date_end_text
             display_date: field_date_display_text
             background: field_image_background
-            media: field_image_media
+            media: field_media
             credit: field_media_credit
             caption: field_media_caption
             group: field_timeline_group
             type: field_timeline_type
             unique_id: nid
       row:
-        type: 'entity:node'
+        type: fields
         options:
-          view_mode: teaser
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
       fields:
         title:
           id: title
@@ -159,10 +164,10 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        field_image_background:
-          id: field_image_background
-          table: node__field_image_background
-          field: field_image_background
+        field_vocab_timeline:
+          id: field_vocab_timeline
+          table: node__field_vocab_timeline
+          field: field_vocab_timeline
           relationship: none
           group_type: group
           admin_label: ''
@@ -208,11 +213,10 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: target_id
-          type: image
+          type: entity_reference_label
           settings:
-            image_style: ''
-            image_link: ''
-          group_column: ''
+            link: true
+          group_column: target_id
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -223,72 +227,10 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        body:
-          id: body
-          table: node__body
-          field: body
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: text_default
-          settings: {  }
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        field_date_display_text:
-          id: field_date_display_text
-          table: node__field_date_display_text
-          field: field_date_display_text
+        field_date_start_text:
+          id: field_date_start_text
+          table: node__field_date_start_text
+          field: field_date_start_text
           relationship: none
           group_type: group
           admin_label: ''
@@ -411,10 +353,10 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        nid:
-          id: nid
-          table: node_field_data
-          field: nid
+        field_date_display_text:
+          id: field_date_display_text
+          table: node__field_date_display_text
+          field: field_date_display_text
           relationship: none
           group_type: group
           admin_label: ''
@@ -460,10 +402,9 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: number_integer
+          type: string
           settings:
-            thousand_separator: ''
-            prefix_suffix: true
+            link_to_entity: false
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -474,20 +415,18 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: node
-          entity_field: nid
           plugin_id: field
-        field_media:
-          id: field_media
-          table: node__field_media
-          field: field_media
+        body:
+          id: body
+          table: node__body
+          field: body
           relationship: none
           group_type: group
           admin_label: ''
           label: ''
           exclude: false
           alter:
-            alter_text: true
+            alter_text: false
             text: ''
             make_link: false
             path: ''
@@ -539,10 +478,10 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        field_image_media:
-          id: field_image_media
-          table: node__field_image_media
-          field: field_image_media
+        field_image_background:
+          id: field_image_background
+          table: node__field_image_background
+          field: field_image_background
           relationship: none
           group_type: group
           admin_label: ''
@@ -583,16 +522,210 @@ display:
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
-          empty: '{{ field_media }}'
+          empty: ''
           hide_empty: false
           empty_zero: false
-          hide_alter_empty: false
+          hide_alter_empty: true
           click_sort_column: target_id
           type: image
           settings:
-            image_style: large
-            image_link: file
+            image_style: ''
+            image_link: ''
           group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_media_image:
+          id: field_media_image
+          table: node__field_media_image
+          field: field_media_image
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: image_url
+          settings:
+            url_type: '2'
+            image_style: ''
+            image_link: ''
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_media_link:
+          id: field_media_link
+          table: node__field_media_link
+          field: field_media_link
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: '{{ field_media_image }}'
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+          click_sort_column: uri
+          type: link
+          settings:
+            trim_length: 80
+            url_only: true
+            url_plain: true
+            rel: '0'
+            target: '0'
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_media:
+          id: field_media
+          table: node__field_media
+          field: field_media
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: '{{ field_media_link }}'
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -716,69 +849,6 @@ display:
           click_sort_column: value
           type: text_default
           settings: {  }
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        field_date_start_text:
-          id: field_date_start_text
-          table: node__field_date_start_text
-          field: field_date_start_text
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -916,10 +986,10 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        title_1:
-          id: title_1
+        nid:
+          id: nid
           table: node_field_data
-          field: title
+          field: nid
           relationship: none
           group_type: group
           admin_label: ''
@@ -965,9 +1035,10 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: string
+          type: number_integer
           settings:
-            link_to_entity: true
+            thousand_separator: ''
+            prefix_suffix: true
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -979,7 +1050,7 @@ display:
           separator: ', '
           field_api_classes: false
           entity_type: node
-          entity_field: title
+          entity_field: nid
           plugin_id: field
       filters:
         status:
@@ -1018,7 +1089,7 @@ display:
           expose:
             label: ''
           granularity: second
-      title: 'Timeline 1'
+      title: 'Timeline Master'
       header: {  }
       footer: {  }
       empty: {  }
@@ -1039,12 +1110,14 @@ display:
         - 'config:field.storage.node.field_date_end_text'
         - 'config:field.storage.node.field_date_start_text'
         - 'config:field.storage.node.field_image_background'
-        - 'config:field.storage.node.field_image_media'
         - 'config:field.storage.node.field_media'
         - 'config:field.storage.node.field_media_caption'
         - 'config:field.storage.node.field_media_credit'
+        - 'config:field.storage.node.field_media_image'
+        - 'config:field.storage.node.field_media_link'
         - 'config:field.storage.node.field_timeline_group'
         - 'config:field.storage.node.field_timeline_type'
+        - 'config:field.storage.node.field_vocab_timeline'
   page_1:
     display_plugin: page
     id: page_1
@@ -1052,7 +1125,10 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: timeline-1
+      path: timeline-master
+      menu:
+        enabled: true
+        expanded: false
     cache_metadata:
       max-age: -1
       contexts:
@@ -1067,9 +1143,11 @@ display:
         - 'config:field.storage.node.field_date_end_text'
         - 'config:field.storage.node.field_date_start_text'
         - 'config:field.storage.node.field_image_background'
-        - 'config:field.storage.node.field_image_media'
         - 'config:field.storage.node.field_media'
         - 'config:field.storage.node.field_media_caption'
         - 'config:field.storage.node.field_media_credit'
+        - 'config:field.storage.node.field_media_image'
+        - 'config:field.storage.node.field_media_link'
         - 'config:field.storage.node.field_timeline_group'
         - 'config:field.storage.node.field_timeline_type'
+        - 'config:field.storage.node.field_vocab_timeline'

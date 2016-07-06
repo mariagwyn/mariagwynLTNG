@@ -10,7 +10,7 @@ field_name: field_timeline_type
 entity_type: node
 bundle: timeline_event
 label: 'Timeline Type'
-description: ''
+description: 'Options are "title", "era" or blank.'
 required: false
 translatable: false
 default_value: {  }

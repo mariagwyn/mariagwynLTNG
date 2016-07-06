@@ -26,6 +26,7 @@ module:
   help: 0
   history: 0
   image: 0
+  image_url_formatter: 0
   inline_entity_form: 0
   layout_plugin: 0
   lightning_core: 0

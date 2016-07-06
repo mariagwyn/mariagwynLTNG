@@ -4,23 +4,22 @@ status: true
 dependencies:
   config:
     - field.field.node.timeline_event.body
-    - field.field.node.timeline_event.field_date_display
     - field.field.node.timeline_event.field_date_display_text
     - field.field.node.timeline_event.field_date_end_text
-    - field.field.node.timeline_event.field_date_start
     - field.field.node.timeline_event.field_date_start_text
     - field.field.node.timeline_event.field_image_background
-    - field.field.node.timeline_event.field_image_media
     - field.field.node.timeline_event.field_media
     - field.field.node.timeline_event.field_media_caption
     - field.field.node.timeline_event.field_media_credit
+    - field.field.node.timeline_event.field_media_image
+    - field.field.node.timeline_event.field_media_link
     - field.field.node.timeline_event.field_timeline_group
     - field.field.node.timeline_event.field_timeline_type
     - field.field.node.timeline_event.field_vocab_timeline
     - node.type.timeline_event
   module:
-    - datetime
     - file_browser
+    - link
     - path
     - text
     - workbench_moderation
@@ -31,7 +30,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 7
+    weight: 5
     settings:
       rows: 9
       summary_rows: 3
@@ -39,54 +38,32 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 16
+    weight: 15
     settings: {  }
     third_party_settings: {  }
-  field_date_display:
-    weight: 4
-    settings: {  }
-    third_party_settings: {  }
-    type: datetime_default
   field_date_display_text:
-    weight: 5
+    weight: 3
     settings:
       size: 60
-      placeholder: 'Date or text as you want it visible'
+      placeholder: '44-30 BCE'
     third_party_settings: {  }
     type: string_textfield
   field_date_end_text:
-    weight: 3
+    weight: 2
     settings:
       size: 12
-      placeholder: '-0033-08-12'
+      placeholder: '-0030-08-12'
     third_party_settings: {  }
     type: string_textfield
-  field_date_start:
-    weight: 1
-    settings: {  }
-    third_party_settings: {  }
-    type: datetime_default
   field_date_start_text:
-    weight: 2
+    weight: 1
     settings:
       size: 12
       placeholder: '-0044-03-15'
     third_party_settings: {  }
     type: string_textfield
   field_image_background:
-    weight: 12
-    settings:
-      entity_browser: browse_files
-      field_widget_edit: '1'
-      field_widget_remove: '1'
-      view_mode: default
-      field_widget_display: ''
-      open: 0
-      field_widget_display_settings: {  }
-    third_party_settings: {  }
-    type: file_browser
-  field_image_media:
-    weight: 8
+    weight: 11
     settings:
       entity_browser: browse_files
       field_widget_edit: '1'
@@ -98,42 +75,61 @@ content:
     third_party_settings: {  }
     type: file_browser
   field_media:
-    weight: 9
+    weight: 8
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
   field_media_caption:
-    weight: 11
+    weight: 10
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
   field_media_credit:
-    weight: 10
+    weight: 9
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: text_textfield
+  field_media_image:
+    weight: 7
+    settings:
+      entity_browser: browse_files_modal
+      field_widget_edit: '1'
+      field_widget_remove: '1'
+      view_mode: default
+      field_widget_display: ''
+      open: 0
+      field_widget_display_settings: {  }
+    third_party_settings: {  }
+    type: file_browser
+  field_media_link:
+    weight: 6
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
   field_timeline_group:
-    weight: 13
+    weight: 12
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
   field_timeline_type:
-    weight: 14
+    weight: 13
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
   field_vocab_timeline:
-    weight: 6
+    weight: 4
     settings:
       match_operator: CONTAINS
       size: 60
@@ -142,20 +138,20 @@ content:
     type: entity_reference_autocomplete
   path:
     type: path
-    weight: 19
+    weight: 18
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 17
+    weight: 16
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 18
+    weight: 17
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -166,7 +162,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 15
+    weight: 14
     settings:
       match_operator: CONTAINS
       size: 60

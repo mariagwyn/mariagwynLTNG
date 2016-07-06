@@ -1,4 +1,4 @@
-uuid: 1d756cb2-24af-46fc-a642-73d4370d73ba
+uuid: 85b1e1d0-0958-4efd-b100-1f0d8a68e293
 langcode: en
 status: true
 dependencies:
@@ -6,8 +6,8 @@ dependencies:
     - file
     - image
     - node
-id: node.field_image_media
-field_name: field_image_media
+id: node.field_media_image
+field_name: field_media_image
 entity_type: node
 type: image
 settings:

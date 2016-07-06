@@ -1,24 +1,24 @@
-uuid: 74a903e7-0d2a-4545-993b-a2476e9721f5
+uuid: 2b465f80-730f-41c5-892f-20f42910eafe
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_image_media
+    - field.storage.node.field_media_image
     - node.type.timeline_event
   module:
     - image
-id: node.timeline_event.field_image_media
-field_name: field_image_media
+id: node.timeline_event.field_media_image
+field_name: field_media_image
 entity_type: node
 bundle: timeline_event
 label: 'Media (Image)'
-description: ''
+description: 'Use for images uploaded to this drupal installation.'
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_directory: 'images/[date:custom:Y]-[date:custom:m]'
   file_extensions: 'png gif jpg jpeg'
   max_filesize: ''
   max_resolution: ''

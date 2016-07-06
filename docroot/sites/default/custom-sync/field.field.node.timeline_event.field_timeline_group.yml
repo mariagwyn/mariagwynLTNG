@@ -10,7 +10,7 @@ field_name: field_timeline_group
 entity_type: node
 bundle: timeline_event
 label: 'Timeline Group'
-description: ''
+description: 'If this even should be grouped on the timeline, enter the exact word used for all in this group.'
 required: false
 translatable: false
 default_value: {  }
