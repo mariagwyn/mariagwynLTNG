@@ -20,10 +20,17 @@
         "composer/installers": "^1.0",
         "drupal-composer/drupal-scaffold": "^2.0.0",
         "cweagans/composer-patches": "1.5.0",
-        "drupal/lightning": "^8.1.00",
+        "drupal/core":                                "~8.1",
+        "drupal/lightning": "^8.1",
         "drupal/file_browser": "~8.1",
         "drupal/views_timelinejs":                    "8.3.x-dev",
         "drupal/image_url_formatter": "~8.1",
+        "drupal/embed":                               "~8.1",
+        "drupal/entity_browser":                      "8.1.x-dev",
+        "drupal/entity_embed":                        "8.1.x-dev",
+        "drupal/security_review" :                    "8.*",
+        "roave/security-advisories":                  "dev-master",
+        "drupal-composer/drupal-security-advisories": "8.0.x-dev",
         "enyo/dropzone" : "dev-master",
         "desandro/imagesloaded" : "dev-master",
         "desandro/masonry" : "dev-master",
@@ -94,6 +101,9 @@
     },
     "config": {
         "bin-dir": "bin/"
+    },
+    "conflict": {
+      "drupal/core": "7.*"
     },
     "autoload": {
         "classmap": [
